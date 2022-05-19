@@ -9,9 +9,9 @@ namespace DataAccess
 {
     public interface IOrderRepository : IRepository<Order>
     {
-        Task<IEnumerable<Order>> GetOrdersByCustomer(Customer customer);
+        Task<IEnumerable<Order>> GetOrdersByCustomer(int customerId);
         Task<IEnumerable<Order>> GetOrdersByProduct(Product product);
-        Task<IEnumerable<Order>> GetOrdersByPaymentMethod(Payment payment);
+        Task<IEnumerable<Order>> GetOrdersByPaymentMethod(int paymentId);
         Task<IEnumerable<Order>> GetApprovedOrders();
         Task<IEnumerable<Order>> GetUnapprovedOrders();
         Task<IEnumerable<Order>> GetCompletedOrders();

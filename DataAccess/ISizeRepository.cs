@@ -9,6 +9,6 @@ namespace DataAccess
 {
     public interface ISizeRepository : IRepository<Size>
     {
-        //Task<IEnumerable<Size>> GetSizesByData();
+        Task<IEnumerable<Size>> GetSizesByData(string data);
     }
 }

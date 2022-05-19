@@ -10,6 +10,5 @@ namespace DataAccess
     public interface IColorRepository : IRepository<Color>
     {
         Task<IEnumerable<Color>> GetColorsByName(string name);
-        //Task<IEnumerable<Color>> GetColorByName(string name);
     }
 }

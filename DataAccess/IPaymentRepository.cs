@@ -9,6 +9,6 @@ namespace DataAccess
 {
     public interface IPaymentRepository : IRepository<Payment>
     {
-        Task<IEnumerable<Payment>> GetPaymentsByCustomer(Customer customer);
+        Task<IEnumerable<Payment>> GetPaymentsByCustomer(int customerId);
     }
 }

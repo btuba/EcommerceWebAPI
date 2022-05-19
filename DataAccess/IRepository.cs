@@ -11,7 +11,7 @@ namespace DataAccess
     {
         Task Create(T entity);
         Task Update(T entity);
-        Task Delete(T entity);
+        Task Delete(int id);
         Task<T> GetById(int id);
         Task<IEnumerable<T>> GetAll();
         Task<bool> IsExist(int id);

@@ -9,6 +9,6 @@ namespace DataAccess
 {
     public interface IImageRepository : IRepository<Image>
     {
-        Task<IEnumerable<Image>> GetImagesByColor(Color color);
+        Task<IEnumerable<Image>> GetImagesByColor(int colorId);
     }
 }

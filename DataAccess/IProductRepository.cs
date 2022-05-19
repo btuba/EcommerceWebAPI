@@ -14,7 +14,7 @@ namespace DataAccess
         Task<IEnumerable<Product>> GetProductsByColor(Color color);
         Task<IEnumerable<Product>> GetProductsByCreatedDate(DateTime time);
         Task<IEnumerable<Product>> GetProductsByUpdatedDate(DateTime time);
-        Task<IEnumerable<Product>> GetActiveProdycts();
-        Task<IEnumerable<Product>> GetUnactiveProdycts();
+        Task<IEnumerable<Product>> GetActiveProducts();
+        Task<IEnumerable<Product>> GetUnactiveProducts();
     }
 }
