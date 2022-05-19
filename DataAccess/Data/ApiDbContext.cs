@@ -19,7 +19,7 @@ namespace DataAccess.Data
         public DbSet<Address> Addresss { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Payment> Payments { get; set; }
-        public DbSet<Payment> Orders { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         public ApiDbContext(DbContextOptions<ApiDbContext> options) : base(options)
         {
