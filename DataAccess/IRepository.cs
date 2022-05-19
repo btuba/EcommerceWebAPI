@@ -9,11 +9,11 @@ namespace DataAccess
 {
     public interface IRepository<T> where T : IEntity, new()
     {
-        Task CreateAsync(T entity);
-        Task UpdateAsync(T entity);
-        Task DeleteAsync(T entity);
+        Task Create(T entity);
+        Task Update(T entity);
+        Task Delete(T entity);
         Task<T> GetById(int id);
-        Task<IEnumerable<T>> GetAllAsync();
+        Task<IEnumerable<T>> GetAll();
         Task<bool> IsExist(int id);
     }
 }
