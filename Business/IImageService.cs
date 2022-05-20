@@ -9,9 +9,9 @@ namespace Business
 {
     public interface IImageService
     {
-        Task AddImage(object request);
+        Task<int> AddImage(object request);
         Task UpdateImage(object request);
-        Task DeleteImage(object request);
+        Task DeleteImage(int id);
         Task<ImageDisplayResponse> GetImageById(int id);
         Task<IList<ImageDisplayResponse>> GetImages();
         Task<bool> IsImageExist(int id);

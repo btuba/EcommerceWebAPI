@@ -9,7 +9,7 @@ namespace Business
 {
     public interface ICustomerService
     {
-        Task AddCustomer(object request);
+        Task<int> AddCustomer(object request);
         Task UpdateCustomer(object request);
         Task DeleteCustomer(int id);
         Task<CustomerDisplayResponse> GetCustomerById(int id);

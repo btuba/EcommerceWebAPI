@@ -10,7 +10,7 @@ namespace Business
     public interface IPaymentService
     {
         Task<IList<PaymentDisplayResponse>> GetPaymentsByCustomer(int customerId);
-        Task AddPaymentMethod(object request);
+        Task<int> AddPaymentMethod(object request);
         Task UpdatePayment(object request);
         Task DeletePayment(int id);
         Task<PaymentDisplayResponse> GetPaymentById(int id);

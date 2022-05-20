@@ -10,7 +10,7 @@ namespace Business
     public interface IColorService
     {
         Task<IList<ColorDisplayResponse>> GetColorsByName(string name);
-        Task AddColor(object request);
+        Task<int> AddColor(object request);
         Task UpdateColor(object request);
         Task DeleteColor(int id);
         Task<ColorDisplayResponse> GetColorById(int id);

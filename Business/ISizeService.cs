@@ -10,7 +10,7 @@ namespace Business
     public interface ISizeService
     {
         Task<IList<SizeDisplayResponse>> GetSizesByData(string data);
-        Task AddSize(object request);
+        Task<int> AddSize(object request);
         Task UpdateSize(object request);
         Task DeleteSize(int id);
         Task<SizeDisplayResponse> GetSizeById(int id);

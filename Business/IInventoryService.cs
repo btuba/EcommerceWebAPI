@@ -9,7 +9,7 @@ namespace Business
 {
     public interface IInventoryService
     {
-        Task AddInventory(object request);
+        Task<int> AddInventory(object request);
         Task UpdateInventory(object request);
         Task DeleteInventory(int id);
         Task<InventoryDisplayResponse> GetInventoryById(int id);
