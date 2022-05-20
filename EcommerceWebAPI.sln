@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entiti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{F74A29F0-2BAE-4E6F-9E7D-0690507F5B91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{3BFD935A-DD52-40D8-8AB0-6CE0ABB3B7FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{3BFD935A-DD52-40D8-8AB0-6CE0ABB3B7FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dtos", "Dtos\Dtos.csproj", "{03219AA3-96DA-4F6B-83BE-B51E21372988}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{3BFD935A-DD52-40D8-8AB0-6CE0ABB3B7FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BFD935A-DD52-40D8-8AB0-6CE0ABB3B7FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BFD935A-DD52-40D8-8AB0-6CE0ABB3B7FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03219AA3-96DA-4F6B-83BE-B51E21372988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03219AA3-96DA-4F6B-83BE-B51E21372988}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03219AA3-96DA-4F6B-83BE-B51E21372988}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03219AA3-96DA-4F6B-83BE-B51E21372988}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
