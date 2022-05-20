@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-    public class EFAddressRepository : IAdrressRepository
+    public class EFAddressRepository : IAddressRepository
     {
         ApiDbContext _context;
         public EFAddressRepository(ApiDbContext context)
@@ -29,7 +29,7 @@ namespace DataAccess.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Address>> GetAdrressesByCity(string city)
+        public async Task<IEnumerable<Address>> GetAddressesByCity(string city)
         {
             return await _context.Addresss.Where(a => a.City == city).ToListAsync();
         }

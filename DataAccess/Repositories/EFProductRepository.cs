@@ -44,8 +44,9 @@ namespace DataAccess.Repositories
             return await _context.Products.FindAsync(id);
         }
 
-        public async Task<IEnumerable<Product>> GetProductsByColor(Color color)
+        public async Task<IEnumerable<Product>> GetProductsByColor(int colorId)
         {
+            var color = _context.Colors.FirstOrDefault(x => x.Id == colorId);
             return await _context.Products.Where(p => p.Colors.Contains(color)).ToListAsync();
         }
 
@@ -59,8 +60,9 @@ namespace DataAccess.Repositories
             return await _context.Products.Where(p => p.Name.Contains(name)).ToListAsync();
         }
 
-        public async Task<IEnumerable<Product>> GetProductsBySize(Size size)
+        public async Task<IEnumerable<Product>> GetProductsBySize(int sizeId)
         {
+            var size = _context.Sizes.FirstOrDefault(x => x.Id == sizeId);
             return await _context.Products.Where(p => p.Sizes.Contains(size)).ToListAsync();
         }
 

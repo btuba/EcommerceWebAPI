@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public interface IAdrressRepository : IRepository<Address>
+    public interface IAddressRepository : IRepository<Address>
     {
-        Task<IEnumerable<Address>> GetAdrressesByCity(string city);
+        Task<IEnumerable<Address>> GetAddressesByCity(string city);
     }
 }

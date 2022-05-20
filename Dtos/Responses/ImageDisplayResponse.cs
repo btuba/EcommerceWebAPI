@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dtos.Responses
 {
-    public interface ImageDisplayResponse
+    public class ImageDisplayResponse
     {
         public int Id { get; set; }
         public object Color { get; set; }
