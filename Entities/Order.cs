@@ -10,9 +10,6 @@ namespace Entities
     public class Order : IEntity
     {
         public int Id { get; set; }
-
-        //[ForeignKey("Customer")]
-        //public int CustomerId { get; set; }
         public Customer Customer { get; set; }
         public ICollection<Product> Products { get; set; }
         public Payment Payment { get; set; }

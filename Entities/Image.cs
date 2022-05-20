@@ -9,7 +9,7 @@ namespace Entities
     public class Image : IEntity
     {
         public int Id { get; set; }
-        public Color Color { get; set; }
+        public Color? Color { get; set; }
         public string Url { get; set; }
     }
 }

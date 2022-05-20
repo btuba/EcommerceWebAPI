@@ -12,6 +12,7 @@ namespace Entities
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }
+        public string Phone { get; set; }
         public ICollection<Address> Addresses { get; set; }
         public ICollection<Payment> Payments { get; set; }
         public ICollection<Order> Orders { get; set; }
