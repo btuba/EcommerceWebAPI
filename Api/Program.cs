@@ -1,3 +1,6 @@
+using Business;
+using Business.Concrete;
+using Business.Mapping;
 using DataAccess;
 using DataAccess.Data;
 using DataAccess.Repositories;
@@ -12,10 +15,21 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Service Configuration
+builder.Services.AddScoped<IAddressService, AddressService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IColorService, ColorService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IImageService, ImageService>();
+builder.Services.AddScoped<IInventoryService, InventoryService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ISizeService, SizeService>();
+
 
 // EFEntityRepository Configuration
 builder.Services.AddScoped<IProductRepository, EFProductRepository>();
-builder.Services.AddScoped<IAdrressRepository,EFAddressRepository >();
+builder.Services.AddScoped<IAddressRepository, EFAddressRepository>();
 builder.Services.AddScoped<ICustomerRepository,EFCustomerRepository >();
 builder.Services.AddScoped<ICategoryRepository, EFCategoryRepository >();
 builder.Services.AddScoped<IColorRepository, EFColorRepository>();
@@ -24,6 +38,9 @@ builder.Services.AddScoped<IInventoryRepository, EFInventoryRepository>();
 builder.Services.AddScoped<IOrderRepository, EFOrderRepository>();
 builder.Services.AddScoped<IPaymentRepository, EFPaymentRepository>();
 builder.Services.AddScoped<ISizeRepository, EFSizeRepository>();
+
+// Add Mapping
+builder.Services.AddAutoMapper(typeof(MapProfile));
 
 // Connect to Db
 builder.Services.AddDbContext<ApiDbContext>(opt =>
