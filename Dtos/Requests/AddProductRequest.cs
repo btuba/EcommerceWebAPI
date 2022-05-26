@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,8 +18,9 @@ namespace Dtos.Requests
 
         [DataType(DataType.Currency)]
         public double Price { get; set; }
-
         public int? CategoryId { get; set; }
-        public bool IsActive { get; set; } = false;
+        public bool IsActive { get; set; }
+        [Url(ErrorMessage = "Validation error!")]
+        public string? Url { get; set; }
     }
 }

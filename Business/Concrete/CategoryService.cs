@@ -34,11 +34,11 @@ namespace Business.Concrete
                 await _categoryRepository.GetAll());
         }
 
-        public async Task<IList<CategoryDisplayResponse>> GetCategoriesByName(string name)
+        /*public async Task<IList<CategoryDisplayResponse>> GetCategoriesByName(string name)
         {
             return _mapper.Map<IList<CategoryDisplayResponse>>(
                 await _categoryRepository.GetCategoriesByName(name));
-        }
+        }*/
 
         public async Task<CategoryDisplayResponse> GetCategoryById(int id)
         {

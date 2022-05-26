@@ -9,7 +9,7 @@ namespace Business
 {
     public interface ICategoryService
     {
-        Task<IList<CategoryDisplayResponse>> GetCategoriesByName(string name);
+        //Task<IList<CategoryDisplayResponse>> GetCategoriesByName(string name);
         Task<int> AddCategory(object request);
         Task UpdateCategory(object request);
         Task DeleteCategory(int id);

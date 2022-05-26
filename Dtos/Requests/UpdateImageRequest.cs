@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dtos.Responses
+namespace Dtos.Requests
 {
-    public class ImageDisplayResponse
+    public class UpdateImageRequest
     {
         public int Id { get; set; }
         public int ColorId { get; set; }
-        public int ProductId { get; set; }
         public string Url { get; set; }
     }
 }

@@ -16,5 +16,6 @@ namespace DataAccess
         Task<IEnumerable<Product>> GetProductsByUpdatedDate(DateTime time);
         Task<IEnumerable<Product>> GetActiveProducts();
         Task<IEnumerable<Product>> GetUnactiveProducts();
+        Task<Product> AddSizeToProduct(Product product,Size size);
     }
 }

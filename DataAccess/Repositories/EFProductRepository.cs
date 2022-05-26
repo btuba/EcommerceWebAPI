@@ -16,6 +16,14 @@ namespace DataAccess.Repositories
         {
             _context = context;
         }
+
+        public async Task<Product> AddSizeToProduct(Product product,Size size)
+        {
+            (await _context.Products.FindAsync(product.Id)).Sizes.Add(size);
+            await _context.SaveChangesAsync();
+            return product;
+        }
+
         public async Task Create(Product entity)
         {
             await _context.AddAsync(entity);
@@ -41,7 +49,8 @@ namespace DataAccess.Repositories
 
         public async Task<Product> GetById(int id)
         {
-            return await _context.Products.FindAsync(id);
+            var product = await _context.Products.FindAsync(id);
+            return product;
         }
 
         public async Task<IEnumerable<Product>> GetProductsByColor(int colorId)

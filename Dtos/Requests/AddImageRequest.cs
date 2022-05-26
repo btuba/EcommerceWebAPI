@@ -14,5 +14,6 @@ namespace Dtos.Requests
         [Required(ErrorMessage = "Required!")]
         [Url(ErrorMessage ="Validation error!")]
         public string Url { get; set; }
+        public int ProductId { get; set; }
     }
 }

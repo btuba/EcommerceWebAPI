@@ -33,6 +33,9 @@ namespace Business.Mapping
             CreateMap<AddPaymentRequest, Payment>();
             CreateMap<AddProductRequest, Product>();
             CreateMap<AddSizeRequest, Size>();
+
+            CreateMap<UpdateCategoryRequest, Category>();
+            CreateMap<UpdateColorRequest, Color>();
         }
     }
 }

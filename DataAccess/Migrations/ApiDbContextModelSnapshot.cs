@@ -22,6 +22,21 @@ namespace DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("ColorProduct", b =>
+                {
+                    b.Property<int>("ColorsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ColorsId", "ProductsId");
+
+                    b.HasIndex("ProductsId");
+
+                    b.ToTable("ColorProduct");
+                });
+
             modelBuilder.Entity("Entities.Address", b =>
                 {
                     b.Property<int>("Id")
@@ -90,12 +105,7 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("Colors");
                 });
@@ -116,6 +126,10 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -133,10 +147,10 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ColorId")
+                    b.Property<int?>("ColorId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProductId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<string>("Url")
@@ -175,9 +189,6 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ColorId")
-                        .IsUnique();
-
-                    b.HasIndex("ProductId")
                         .IsUnique();
 
                     b.HasIndex("SizeId")
@@ -221,7 +232,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("PaymentId");
 
-                    b.ToTable("Order");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Entities.Payment", b =>
@@ -268,6 +279,9 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("InventoryId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -281,9 +295,14 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("InventoryId");
 
                     b.ToTable("Products");
                 });
@@ -335,6 +354,21 @@ namespace DataAccess.Migrations
                     b.ToTable("ProductSize");
                 });
 
+            modelBuilder.Entity("ColorProduct", b =>
+                {
+                    b.HasOne("Entities.Color", null)
+                        .WithMany()
+                        .HasForeignKey("ColorsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Product", null)
+                        .WithMany()
+                        .HasForeignKey("ProductsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Entities.Address", b =>
                 {
                     b.HasOne("Entities.Customer", "Customer")
@@ -355,26 +389,21 @@ namespace DataAccess.Migrations
                     b.Navigation("SupCategory");
                 });
 
-            modelBuilder.Entity("Entities.Color", b =>
-                {
-                    b.HasOne("Entities.Product", null)
-                        .WithMany("Colors")
-                        .HasForeignKey("ProductId");
-                });
-
             modelBuilder.Entity("Entities.Image", b =>
                 {
                     b.HasOne("Entities.Color", "Color")
                         .WithMany()
-                        .HasForeignKey("ColorId")
+                        .HasForeignKey("ColorId");
+
+                    b.HasOne("Entities.Product", "Product")
+                        .WithMany("Images")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Entities.Product", null)
-                        .WithMany("Images")
-                        .HasForeignKey("ProductId");
-
                     b.Navigation("Color");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Entities.Inventory", b =>
@@ -382,12 +411,6 @@ namespace DataAccess.Migrations
                     b.HasOne("Entities.Color", null)
                         .WithOne("Inventory")
                         .HasForeignKey("Entities.Inventory", "ColorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entities.Product", null)
-                        .WithOne("Inventory")
-                        .HasForeignKey("Entities.Inventory", "ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -409,7 +432,7 @@ namespace DataAccess.Migrations
                     b.HasOne("Entities.Payment", "Payment")
                         .WithMany("Orders")
                         .HasForeignKey("PaymentId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Customer");
@@ -422,7 +445,7 @@ namespace DataAccess.Migrations
                     b.HasOne("Entities.Customer", "Customer")
                         .WithMany("Payments")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Customer");
@@ -434,7 +457,13 @@ namespace DataAccess.Migrations
                         .WithMany("Products")
                         .HasForeignKey("CategoryId");
 
+                    b.HasOne("Entities.Inventory", "Inventory")
+                        .WithMany()
+                        .HasForeignKey("InventoryId");
+
                     b.Navigation("Category");
+
+                    b.Navigation("Inventory");
                 });
 
             modelBuilder.Entity("OrderProduct", b =>
@@ -494,12 +523,7 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Entities.Product", b =>
                 {
-                    b.Navigation("Colors");
-
                     b.Navigation("Images");
-
-                    b.Navigation("Inventory")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Size", b =>

@@ -45,6 +45,11 @@ namespace DataAccess.Repositories
             return await _context.Images.Where(x => x.Color.Id == colorId).ToListAsync();
         }
 
+        public async Task<IEnumerable<Image>> GetImagesByProduct(int productId)
+        {
+            return await _context.Images.Where(x => x.Product.Id == productId).ToListAsync();
+        }
+
         public async Task<bool> IsExist(int id)
         {
             return await _context.Images.AnyAsync(x => x.Id == id);

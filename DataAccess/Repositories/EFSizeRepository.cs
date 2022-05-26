@@ -46,6 +46,11 @@ namespace DataAccess.Repositories
             return await _context.Sizes.Where(x => x.Data == data).ToListAsync();
         }
 
+        public async Task<IEnumerable<Size>> GetSizesByProduct(Product product)
+        {
+            return await _context.Sizes.Where(x => x.Products.Contains(product)).ToListAsync();
+        }
+
         public async Task<bool> IsExist(int id)
         {
             return await _context.Sizes.AnyAsync(x => x.Id == id);

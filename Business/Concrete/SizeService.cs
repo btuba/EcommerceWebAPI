@@ -30,7 +30,8 @@ namespace Business.Concrete
 
         public async Task<SizeDisplayResponse> GetSizeById(int id)
         {
-            return mapper.Map<SizeDisplayResponse>(await sizeRepository.GetById(id));
+            var size = await sizeRepository.GetById(id);
+            return mapper.Map<SizeDisplayResponse>(size);
         }
 
         public async Task<IList<SizeDisplayResponse>> GetSizes()
@@ -52,6 +53,7 @@ namespace Business.Concrete
 
         public async Task UpdateSize(object request)
         {
+           // var response = mapper.Map<Size>(request);
             await sizeRepository.Update(mapper.Map<Size>(request));
         }
     }

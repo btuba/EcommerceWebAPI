@@ -22,5 +22,6 @@ namespace Business
         Task UpdateProduct(object request);
         Task DeleteProduct(int id);
         Task<bool> IsProductExist(int id);
+        Task<int> AddSizeToProduct(int sizeId, int productId);
     }
 }
